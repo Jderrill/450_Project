@@ -1,0 +1,254 @@
+1mcnpx    version 2.7.0 ld=Mon Apr 18 08:00:00 MST 2011                12/11/17 13:40:54
+ ***************************************************************************************   probid =   12/11/17 13:40:54
+ n=SSR_mod.inp o=SSR_mod_materials_update.txt                                                                            
+
+ *************************************************************
+ *                                                           *
+ *                   MCNPX                                   *
+ *                                                           *
+ * Copyright 2007. Los Alamos National Security, LLC.        *
+ * All rights reserved.                                      *
+ *                                                           *
+ * This material was produced under U.S. Government contract *
+ * DE-AC52-06NA25396 for Los Alamos National Laboratory,     *
+ * which is operated by Los Alamos National Security, LLC    *
+ * for the U.S. Department of Energy. The Government is      *
+ * granted for itself and others acting on its behalf a      *
+ * paid-up, nonexclusive, irrevocable worldwide license in   *
+ * this material to reproduce, prepare derivative works, and *
+ * works, and perform publicly and display publicly.         *
+ * Beginning five (5) years after June 1, 2006, subject to   *
+ * additional five-year worldwide renewals, the Government   *
+ * is granted for itself and others acting on its behalf     *
+ * a paid-up, nonexclusive, irrevocable worldwide license    *
+ * in this material to reproduce, prepare derivative works,  *
+ * distribute copies to the public, perform publicly and     *
+ * display publicly, and to permit others to do so.          *
+ *                                                           *
+ * NEITHER THE UNITED STATES NOR THE UNITED STATES           *
+ * DEPARTMENT OF ENERGY, NOR LOS ALAMOS NATIONAL SECURITY,   *
+ * LLC, NOR ANY OF THEIR EMPLOYEES, MAKES ANY WARRANTY,      *
+ * EXPRESS OR IMPLIED, OR ASSUMES ANY LEGAL LIABILITY OR     *
+ * RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR         *
+ * USEFULNESS OF ANY INFORMATION, APPARATUS, PRODUCT, OR     *
+ * PROCESS DISCLOSED, OR REPRESENTS THAT ITS USE WOULD NOT   *
+ * INFRINGE PRIVATELY OWNED RIGHTS.                          *
+ *                                                           *
+ *************************************************************
+    1-       SSR Fuel Tube                                                                   
+    2-       c      -----------------------------------------------------------------        
+    3-       c      James Richards                                                           
+    4-       c      -----------------------------------------------------------------        
+    5-       c      12.11.2017                                                               
+    6-       c      -----------------------------------------------------------------        
+    7-       c                                                                               
+    8-       c      ------------------------- MODEL NOTES ---------------------------        
+    9-       c                                                                               
+   10-       c      -----------                                                              
+   11-       c                                                                               
+   12-       c      -----------                                                              
+   13-       c                                                                               
+   14-       c      -----------                                                              
+   15-       c      assumptions                                                              
+   16-       c      -----------                                                              
+   17-       c                                                                               
+   18-       c      (1) fuel is U235,U238,O                                                  
+   19-       c                                                                               
+   20-       c      -----------                                                              
+   21-       c                                                                               
+   22-       c      -----------                                                              
+   23-       c      data                                                                     
+   24-       c      -----------                                                              
+   25-       c                                                                               
+   26-       c      -----------                                                              
+   27-       c                                                                               
+   28-       c      ----------------------- END MODEL NOTES -------------------------        
+   29-       c                                                                               
+   30-       c      -----------------------------------------------------------------        
+   31-       c                                                                               
+   32-       c      ------------------------- START CARDS ---------------------------        
+   33-       c                                                                               
+   34-       c      -----------                                                              
+   35-       c      cell cards                                                               
+   36-       c      -----------                                                              
+   37-       c                                                                               
+   38-       c      ---                                                                      
+   39-       c      unit cell                                                                
+   40-       c      ---                                                                      
+   41-         100     1  -10.97 -10 11 -12                                                  
+   42-       c      ---                                                                      
+   43-         102     2  -6.506 (10 :-11 :12 )11 -12 -13                                    
+   44-       c      ---                                                                      
+   45-         103     3 -0.7295 (-11 :12 :13 )-50 51 -52 53 -54 55                          
+   46-       c      ---                                                                      
+   47-       c      end unit cell                                                            
+   48-       c      ---                                                                      
+   49-       c                                                                               
+   50-       c      ---                                                                      
+   51-         999     0         50 :-51 :52 :-53 :54 :-55                                   
+   52-       c      ---                                                                      
+   53-       c                                                                               
+   54-       c      -----------                                                              
+   55-       c      end cell cards                                                           
+   56-       c      -----------                                                              
+   57-                                                                                       
+   58-       c      -----------                                                              
+   59-       c      surface cards                                                            
+   60-       c      -----------                                                              
+   61-       c                                                                               
+   62-       c      ---                                                                      
+   63-       c      unit cell geometry                                                       
+   64-       c      ---                                                                      
+   65-       c                                                                               
+   66-       c      ---                                                                      
+   67-       c      fuel                                                                     
+   68-          10        cz 0.4095  $fuel radius                                            
+   69-          11        pz -200  $fuel bottom                                              
+   70-          12        pz 200  $fuel top                                                  
+   71-       c      ---                                                                      
+   72-       c                                                                               
+   73-       c      ---                                                                      
+   74-       c      cladding                                                                 
+   75-          13        cz 0.475  $cladding radius                                         
+   76-       c      ---                                                                      
+   77-       c                                                                               
+   78-       c      ---                                                                      
+   79-       c      moderator                                                                
+   80-       c      ---                                                                      
+   81-          50        px 0.627  $right edge of cell                                      
+   82-          51        px -0.627  $left edge of cell                                      
+   83-          52        py 0.627  $front edge of cell                                      
+   84-          53        py -0.627  $back edge of cell                                      
+   85-          54        pz 200.627  $top cap of cell                                       
+   86-          55        pz -200.627  $bottom cap of cell                                   
+   87-       c      ---                                                                      
+   88-       c                                                                               
+   89-       c      ---                                                                      
+   90-       c      end unit cell geometry                                                   
+   91-       c      ---                                                                      
+   92-       c                                                                               
+   93-       c      -----------                                                              
+   94-       c      end surface cards                                                        
+   95-       c      -----------                                                              
+   96-                                                                                       
+   97-       c      -----------                                                              
+   98-       c      data cards                                                               
+   99-       c      -----------                                                              
+  100-       c                                                                               
+  101-       c      ---                                                                      
+  102-       c      physics                                                                  
+  103-       c      ---                                                                      
+  104-       c                                                                               
+  105-       c      ---                                                                      
+  106-       c      MODE is for neutrons,photons                                             
+  107-       c      ---                                                                      
+  108-       c                                                                               
+  109-       c      ---                                                                      
+  110-       mode  n p                                                                       
+ warning.  photonuclear physics may be needed (phys:p).
+  111-       kcode 1000 1.000000 10 100                                                      
+  112-       ksrc  0.000000 0.000000 0.000000                                                
+  113-       c      ---                                                                      
+  114-       c                                                                               
+  115-       c      ---                                                                      
+  116-       c      end source                                                               
+  117-       c      ---                                                                      
+  118-       c                                                                               
+  119-       c      dose                                                                     
+  120-       c      ---                                                                      
+  121-       c                                                                               
+  122-       c      ---                                                                      
+  123-       c      end tally                                                                
+  124-       c      ---                                                                      
+  125-       c                                                                               
+  126-       c      ---                                                                      
+  127-       c      materials                                                                
+  128-       c      ---                                                                      
+  129-       c                                                                               
+  130-       c      ---                                                                      
+  131-       c      Fuel Salt                                                                
+  132-       m1    94239.66c         -0.28                                                   
+  133-             92235.66c        -0.008 92238.66c        -0.265 17000.66c        -0.368   
+  134-             11023.66c        -0.079                                                   
+  135-       c      ---                                                                      
+  136-       c                                                                               
+  137-       c      ---                                                                      
+  138-       c      cladding: zirconium                                                      
+  139-       m2    12000.          -0.0005                                                   
+  140-             28000.           -0.005 25000.           -0.002 16032.         -0.00015   
+  141-             47108.          -5e-006 13027.           -0.011 5011.           -5e-005   
+  142-             83209.          -1e-006 27059.            -0.02 24052.           -0.175   
+  143-             25064.           -0.005 42096.           -0.028 28059.            -0.45   
+  144-             82207.        -1.5e-005 40000.          -0.0004 22048.           -0.011   
+  145-             26056.        -0.291879                                                   
+  146-       c      ---                                                                      
+  147-       c                                                                               
+  148-       c      ---                                                                      
+  149-       c      coolant salt                                                             
+  150-       m3    40000 -0.374                                                              
+  151-             17000 -0.42                                                               
+  152-             11023 -0.023                                                              
+  153-             19039 -0.183                                                              
+  154-       c      ---                                                                      
+  155-       c                                                                               
+  156-       c      ---                                                                      
+  157-       c      end materials                                                            
+  158-       c      ---                                                                      
+  159-       c                                                                               
+  160-       c      ---                                                                      
+  161-       c      output                                                                   
+  162-       c      ---                                                                      
+  163-       c      PRINT  10 30 38 40 50 55 110 118 120 126 128 160 161 162 170 210 220     
+  164-       prdmp  2j 1                                                                     
+  165-       c      ---                                                                      
+  166-       c      end output                                                               
+  167-       c      ---                                                                      
+  168-       c                                                                               
+  169-       c      -----------                                                              
+  170-       c      end data cards                                                           
+  171-       c      -----------                                                              
+  172-       c                                                                               
+  173-       c      ----------- END CARDS -----------                                        
+  174-       c                                                                               
+  175-       c      -----------------------------------------------------------------        
+ 
+ warning.  zero neutron     importance within non-void cell  100.
+ 
+ warning.  zero neutron     importance within non-void cell  102.
+ 
+ warning.  zero neutron     importance within non-void cell  103.
+ 
+ fatal error.  neutron     importances are all zero.
+ 
+ warning.  zero photon      importance within non-void cell  100.
+ 
+ warning.  zero photon      importance within non-void cell  102.
+ 
+ warning.  zero photon      importance within non-void cell  103.
+ 
+ fatal error.  photon      importances are all zero.
+ 
+ fatal error.  the entire source was rejected.
+1     initial source from ksrc card.                                                                    print table 90
+
+ original number of points                             1
+    points not in any cell                       0
+    points in cells of zero importance           1
+    points in void cells                         0
+    points in ambiguous cells                    0
+ total points rejected                                 1
+ points remaining                                      0
+ points after expansion or contraction                 0
+ nominal source size                                1000
+
+ initial guess for k(eff.)                      1.000000
+
+ cycles to skip before tallying                       10
+
+ number of keff cycles that can be stored           6500
+
+  total fission nubar data are being used.
+
+ bad trouble in imcn     in routine skcode                            
+ no source points in kcode                                            
+

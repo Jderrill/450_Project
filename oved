@@ -1,0 +1,591 @@
+1mcnpx    version 27e   ld=Thu Mar 03 08:00:00 MST 2011                12/11/17 16:52:09
+ ***************************************************************************************   probid =   12/11/17 16:52:09
+ ixr i=inp o=oved ru=rved wwout=eved wwone=nved wssa=wsved mctal=mcved ptrac=pved mdata=mdved                            
+
+ *************************************************************
+ *                                                           *
+ *                   MCNPX                                   *
+ *                                                           *
+ * Copyright 2007. Los Alamos National Security, LLC.        *
+ * All rights reserved.                                      *
+ *                                                           *
+ * This material was produced under U.S. Government contract *
+ * DE-AC52-06NA25396 for Los Alamos National Laboratory,     *
+ * which is operated by Los Alamos National Security, LLC    *
+ * for the U.S. Department of Energy. The Government is      *
+ * granted for itself and others acting on its behalf a      *
+ * paid-up, nonexclusive, irrevocable worldwide license in   *
+ * this material to reproduce, prepare derivative works, and *
+ * works, and perform publicly and display publicly.         *
+ * Beginning five (5) years after June 1, 2006, subject to   *
+ * additional five-year worldwide renewals, the Government   *
+ * is granted for itself and others acting on its behalf     *
+ * a paid-up, nonexclusive, irrevocable worldwide license    *
+ * in this material to reproduce, prepare derivative works,  *
+ * distribute copies to the public, perform publicly and     *
+ * display publicly, and to permit others to do so.          *
+ *                                                           *
+ * NEITHER THE UNITED STATES NOR THE UNITED STATES           *
+ * DEPARTMENT OF ENERGY, NOR LOS ALAMOS NATIONAL SECURITY,   *
+ * LLC, NOR ANY OF THEIR EMPLOYEES, MAKES ANY WARRANTY,      *
+ * EXPRESS OR IMPLIED, OR ASSUMES ANY LEGAL LIABILITY OR     *
+ * RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR         *
+ * USEFULNESS OF ANY INFORMATION, APPARATUS, PRODUCT, OR     *
+ * PROCESS DISCLOSED, OR REPRESENTS THAT ITS USE WOULD NOT   *
+ * INFRINGE PRIVATELY OWNED RIGHTS.                          *
+ *                                                           *
+ *************************************************************
+    1-       SSR Fuel Tube                                                                   
+    2-       c      -----------------------------------------------------------------        
+    3-       c      James Richards                                                           
+    4-       c      -----------------------------------------------------------------        
+    5-       c      12.11.2017                                                               
+    6-       c      -----------------------------------------------------------------        
+    7-       c                                                                               
+    8-       c      ------------------------- MODEL NOTES ---------------------------        
+    9-       c                                                                               
+   10-       c      -----------                                                              
+   11-       c                                                                               
+   12-       c      -----------                                                              
+   13-       c                                                                               
+   14-       c      -----------                                                              
+   15-       c      assumptions                                                              
+   16-       c      -----------                                                              
+   17-       c                                                                               
+   18-       c      (1) fuel is U235,U238,O                                                  
+   19-       c                                                                               
+   20-       c      -----------                                                              
+   21-       c                                                                               
+   22-       c      -----------                                                              
+   23-       c      data                                                                     
+   24-       c      -----------                                                              
+   25-       c                                                                               
+   26-       c      -----------                                                              
+   27-       c                                                                               
+   28-       c      ----------------------- END MODEL NOTES -------------------------        
+   29-       c                                                                               
+   30-       c      -----------------------------------------------------------------        
+   31-       c                                                                               
+   32-       c      ------------------------- START CARDS ---------------------------        
+   33-       c                                                                               
+   34-       c      -----------                                                              
+   35-       c      cell cards                                                               
+   36-       c      -----------                                                              
+   37-       c                                                                               
+   38-       c      ---                                                                      
+   39-       c      unit cell                                                                
+   40-       c      ---                                                                      
+   41-       100     1  -3.39 -10 11 -12 u=1 imp:n,p=1 $fuel salt                            
+   42-       c      ---                                                                      
+   43-       102     2  -8.00 (10 :-11 :12 )11 -12 -13 u=1 imp:n,p=1 $clad                   
+   44-       c      ---                                                                      
+   45-       103     3 -2.77 (-11 :12 :13 )-50 51 -52 53 -54 55 u=1 imp:n,p=1 $coolant salt  
+   46-       c      ---                                                                      
+   47-       104     0 -50 51 -52 53 11 -12 lat=1 fill=1 u=2 imp:n,p=1 $lattice unit cell    
+   48-       c      ---                                                                      
+   49-       c      end unit cell                                                            
+   50-       c      ---                                                                      
+   51-       c                                                                               
+   52-       c      ---                                                                      
+   53-       c      window surface                                                           
+   54-       c      ---                                                                      
+   55-       200     0  60 -61 -62 63 11 -12  fill=2 imp:n,p=1    $lattice window            
+   56-       c      ---                                                                      
+   57-       c      ---                                                                      
+   58-       300    3 -0.7295      70 -71 72 -73 74 -75 #200 imp:n,p=1 $infinite medium      
+   59-       c      ---                                                                      
+   60-       999     0         -70:71:-72:73:-74:75 imp:n,p=0 $void                          
+   61-       c      ---                                                                      
+   62-       c                                                                               
+   63-       c      -----------                                                              
+   64-       c      end cell cards                                                           
+   65-       c      -----------                                                              
+   66-                                                                                       
+   67-       c      -----------                                                              
+   68-       c      surface cards                                                            
+   69-       c      -----------                                                              
+   70-       c                                                                               
+   71-       c      ---                                                                      
+   72-       c      unit cell geometry                                                       
+   73-       c      ---                                                                      
+   74-       c                                                                               
+   75-       c      ---                                                                      
+   76-       c      fuel                                                                     
+   77-          10        cz 0.45  $fuel radius                                              
+   78-          11        pz -160  $fuel bottom                                              
+   79-          12        pz 160  $fuel top                                                  
+   80-       c      ---                                                                      
+   81-       c                                                                               
+   82-       c      ---                                                                      
+   83-       c      cladding                                                                 
+   84-          13        cz 0.5  $cladding radius                                           
+   85-       c      ---                                                                      
+   86-       c                                                                               
+   87-       c      ---                                                                      
+   88-       c      Coolant Salt                                                             
+   89-       c      ---                                                                      
+   90-          50        px 0.5025  $right edge of cell                                     
+   91-          51        px -0.5025  $left edge of cell                                     
+   92-          52        py 0.5025  $front edge of cell                                     
+   93-          53        py -0.5025  $back edge of cell                                     
+   94-          54        pz 160.5025  $top cap of cell                                      
+   95-          55        pz -160.5025  $bottom cap of cell                                  
+   96-       c      ---                                                                      
+   97-       c                                                                               
+   98-       c      ---                                                                      
+   99-       c      end unit cell geometry                                                   
+  100-       c      ---                                                                      
+  101-       c                                                                               
+  102-       c      ---                                                                      
+  103-       c      window                                                                   
+  104-       c      ---                                                                      
+  105-       60     PX -0.5025                                                               
+  106-       61     PX  19.5975                                                              
+  107-       62     PY  19.5975                                                              
+  108-       63     PY -0.5025                                                               
+  109-       c                                                                               
+  110-       c      ---                                                                      
+  111-       c      infinite medium                                                          
+  112-       c      ---                                                                      
+  113-       70     PX -1000                                                                 
+  114-       71     PX  1000                                                                 
+  115-       72     PY -1000                                                                 
+  116-       73     PY  1000                                                                 
+  117-       74     PZ -1000                                                                 
+  118-       75     PZ  1000                                                                 
+  119-       c      ---                                                                      
+  120-       c                                                                               
+  121-       c      -----------                                                              
+  122-       c      end surface cards                                                        
+  123-       c      -----------                                                              
+  124-                                                                                       
+  125-       c      -----------                                                              
+  126-       c      data cards                                                               
+  127-       c      -----------                                                              
+  128-       c                                                                               
+  129-       c      ---                                                                      
+  130-       c      physics                                                                  
+  131-       c      ---                                                                      
+  132-       c                                                                               
+  133-       c      ---                                                                      
+  134-       c      MODE is for neutrons,photons                                             
+  135-       c      ---                                                                      
+  136-       c                                                                               
+  137-       c      ---                                                                      
+  138-       mode  n p                                                                       
+ warning.  photonuclear physics may be needed (phys:p).
+  139-       kcode 1000 1.000000 10 100                                                      
+  140-       ksrc                                                                            
+  141-       c                                                                               
+  142-       0 0 0   1.1 0 0   2.2 0 0   3.3 0 0                                             
+ fatal error.        is not a legal data symbol.
+  143-       4.4 0 0   5.5 0 0   6.6 0 0   7.7 0 0                                           
+ fatal error.        is not a legal data symbol.
+  144-       8.8 0 0   9.9 0 0   11.0 0 0   12.1 0 0                                         
+ fatal error.        is not a legal data symbol.
+  145-       13.2 0 0   14.3 0 0   15.4 0 0   16.5 0 0                                       
+ fatal error.        is not a legal data symbol.
+  146-       17.6 0 0   18.7 0 0   19.8 0 0   20.9 0 0                                       
+ fatal error.        is not a legal data symbol.
+  147-       c                                                                               
+  148-       c   ---Row 2 ---                                                                
+  149-       c                                                                               
+  150-       0 1.1 0   1.1 1.1 0   2.2 1.1 0   3.3 1.1 0                                     
+ fatal error.        is not a legal data symbol.
+  151-       4.4 1.1 0   5.5 1.1 0   6.6 1.1 0   7.7 1.1 0                                   
+ fatal error.        is not a legal data symbol.
+  152-       8.8 1.1 0   9.9 1.1 0   11.0 1.1 0   12.1 1.1 0                                 
+ fatal error.        is not a legal data symbol.
+  153-       13.2 1.1 0   14.3 1.1 0   15.4 1.1 0   16.5 1.1 0                               
+ fatal error.        is not a legal data symbol.
+  154-       17.6 1.1 0   18.7 1.1 0   19.8 1.1 0   20.9 1.1 0                               
+ fatal error.        is not a legal data symbol.
+  155-       c                                                                               
+  156-       c   ---Row 3 ---                                                                
+  157-       c                                                                               
+  158-       0 2.2 0   1.1 2.2 0   2.2 2.2 0   3.3 2.2 0                                     
+ fatal error.        is not a legal data symbol.
+  159-       4.4 2.2 0   5.5 2.2 0   6.6 2.2 0   7.7 2.2 0                                   
+ fatal error.        is not a legal data symbol.
+  160-       8.8 2.2 0   9.9 2.2 0   11.0 2.2 0   12.1 2.2 0                                 
+ fatal error.        is not a legal data symbol.
+  161-       13.2 2.2 0   14.3 2.2 0   15.4 2.2 0   16.5 2.2 0                               
+ fatal error.        is not a legal data symbol.
+  162-       17.6 2.2 0   18.7 2.2 0   19.8 2.2 0   20.9 2.2 0                               
+ fatal error.        is not a legal data symbol.
+  163-       c                                                                               
+  164-       c   ---Row 4 ---                                                                
+  165-       c                                                                               
+  166-       0 3.3 0   1.1 3.3 0   2.2 3.3 0   3.3 3.3 0                                     
+ fatal error.        is not a legal data symbol.
+  167-       4.4 3.3 0   5.5 3.3 0   6.6 3.3 0   7.7 3.3 0                                   
+ fatal error.        is not a legal data symbol.
+  168-       8.8 3.3 0   9.9 3.3 0   11.0 3.3 0   12.1 3.3 0                                 
+ fatal error.        is not a legal data symbol.
+  169-       13.2 3.3 0   14.3 3.3 0   15.4 3.3 0   16.5 3.3 0                               
+ fatal error.        is not a legal data symbol.
+  170-       17.6 3.3 0   18.7 3.3 0   19.8 3.3 0   20.9 3.3 0                               
+ fatal error.        is not a legal data symbol.
+  171-       c                                                                               
+  172-       c   ---Row 5 ---                                                                
+  173-       c                                                                               
+  174-       0 4.4 0   1.1 4.4 0   2.2 4.4 0   3.3 4.4 0                                     
+ fatal error.        is not a legal data symbol.
+  175-       4.4 4.4 0   5.5 4.4 0   6.6 4.4 0   7.7 4.4 0                                   
+ fatal error.        is not a legal data symbol.
+  176-       8.8 4.4 0   9.9 4.4 0   11.0 4.4 0   12.1 4.4 0                                 
+ fatal error.        is not a legal data symbol.
+  177-       13.2 4.4 0   14.3 4.4 0   15.4 4.4 0   16.5 4.4 0                               
+ fatal error.        is not a legal data symbol.
+  178-       17.6 4.4 0   18.7 4.4 0   19.8 4.4 0   20.9 4.4 0                               
+ fatal error.        is not a legal data symbol.
+  179-       c                                                                               
+  180-       c   ---Row 6 ---                                                                
+  181-       c                                                                               
+  182-       0 5.5 0   1.1 5.5 0   2.2 5.5 0   3.3 5.5 0                                     
+ fatal error.        is not a legal data symbol.
+  183-       4.4 5.5 0   5.5 5.5 0   6.6 5.5 0   7.7 5.5 0                                   
+ fatal error.        is not a legal data symbol.
+  184-       8.8 5.5 0   9.9 5.5 0   11.0 5.5 0   12.1 5.5 0                                 
+ fatal error.        is not a legal data symbol.
+  185-       13.2 5.5 0   14.3 5.5 0   15.4 5.5 0   16.5 5.5 0                               
+ fatal error.        is not a legal data symbol.
+  186-       17.6 5.5 0   18.7 5.5 0   19.8 5.5 0   20.9 5.5 0                               
+ fatal error.        is not a legal data symbol.
+  187-       c                                                                               
+  188-       c   ---Row 7 ---                                                                
+  189-       c                                                                               
+  190-       0 6.6 0   1.1 6.6 0   2.2 6.6 0   3.3 6.6 0                                     
+ fatal error.        is not a legal data symbol.
+  191-       4.4 6.6 0   5.5 6.6 0   6.6 6.6 0   7.7 6.6 0                                   
+ fatal error.        is not a legal data symbol.
+  192-       8.8 6.6 0   9.9 6.6 0   11.0 6.6 0   12.1 6.6 0                                 
+ fatal error.        is not a legal data symbol.
+  193-       13.2 6.6 0   14.3 6.6 0   15.4 6.6 0   16.5 6.6 0                               
+ fatal error.        is not a legal data symbol.
+  194-       17.6 6.6 0   18.7 6.6 0   19.8 6.6 0   20.9 6.6 0                               
+ fatal error.        is not a legal data symbol.
+  195-       c                                                                               
+  196-       c   ---Row 8 ---                                                                
+  197-       c                                                                               
+  198-       0 7.7 0   1.1 7.7 0   2.2 7.7 0   3.3 7.7 0                                     
+ fatal error.        is not a legal data symbol.
+  199-       4.4 7.7 0   5.5 7.7 0   6.6 7.7 0   7.7 7.7 0                                   
+ fatal error.        is not a legal data symbol.
+  200-       8.8 7.7 0   9.9 7.7 0   11.0 7.7 0   12.1 7.7 0                                 
+ fatal error.        is not a legal data symbol.
+  201-       13.2 7.7 0   14.3 7.7 0   15.4 7.7 0   16.5 7.7 0                               
+ fatal error.        is not a legal data symbol.
+  202-       17.6 7.7 0   18.7 7.7 0   19.8 7.7 0   20.9 7.7 0                               
+ fatal error.        is not a legal data symbol.
+  203-       c                                                                               
+  204-       c   ---Row 9 ---                                                                
+  205-       c                                                                               
+  206-       0 8.8 0   1.1 8.8 0   2.2 8.8 0   3.3 8.8 0                                     
+ fatal error.        is not a legal data symbol.
+  207-       4.4 8.8 0   5.5 8.8 0   6.6 8.8 0   7.7 8.8 0                                   
+ fatal error.        is not a legal data symbol.
+  208-       8.8 8.8 0   9.9 8.8 0   11.0 8.8 0   12.1 8.8 0                                 
+ fatal error.        is not a legal data symbol.
+  209-       13.2 8.8 0   14.3 8.8 0   15.4 8.8 0   16.5 8.8 0                               
+ fatal error.        is not a legal data symbol.
+  210-       17.6 8.8 0   18.7 8.8 0   19.8 8.8 0   20.9 8.8 0                               
+ fatal error.        is not a legal data symbol.
+  211-       c                                                                               
+  212-       c   ---Row 10 ---                                                               
+  213-       c                                                                               
+  214-       0 9.9 0   1.1 9.9 0   2.2 9.9 0   3.3 9.9 0                                     
+ fatal error.        is not a legal data symbol.
+  215-       4.4 9.9 0   5.5 9.9 0   6.6 9.9 0   7.7 9.9 0                                   
+ fatal error.        is not a legal data symbol.
+  216-       8.8 9.9 0   9.9 9.9 0   11.0 9.9 0   12.1 9.9 0                                 
+ fatal error.        is not a legal data symbol.
+  217-       13.2 9.9 0   14.3 9.9 0   15.4 9.9 0   16.5 9.9 0                               
+ fatal error.        is not a legal data symbol.
+  218-       17.6 9.9 0   18.7 9.9 0   19.8 9.9 0   20.9 9.9 0                               
+ fatal error.        is not a legal data symbol.
+  219-       c                                                                               
+  220-       c   ---Row 11 ---                                                               
+  221-       c                                                                               
+  222-       0 11.0 0   1.1 11.0 0   2.2 11.0 0   3.3 11.0 0                                 
+ fatal error.        is not a legal data symbol.
+  223-       4.4 11.0 0   5.5 11.0 0   6.6 11.0 0   7.7 11.0 0                               
+ fatal error.        is not a legal data symbol.
+  224-       8.8 11.0 0   9.9 11.0 0   11.0 11.0 0   12.1 11.0 0                             
+ fatal error.        is not a legal data symbol.
+  225-       13.2 11.0 0   14.3 11.0 0   15.4 11.0 0   16.5 11.0 0                           
+ fatal error.        is not a legal data symbol.
+  226-       17.6 11.0 0   18.7 11.0 0   19.8 11.0 0   20.9 11.0 0                           
+ fatal error.        is not a legal data symbol.
+  227-       c                                                                               
+  228-       c   ---Row 12 ---                                                               
+  229-       c                                                                               
+  230-       0 12.1 0   1.1 12.1 0   2.2 12.1 0   3.3 12.1 0                                 
+ fatal error.        is not a legal data symbol.
+  231-       4.4 12.1 0   5.5 12.1 0   6.6 12.1 0   7.7 12.1 0                               
+ fatal error.        is not a legal data symbol.
+  232-       8.8 12.1 0   9.9 12.1 0   11.0 12.1 0   12.1 12.1 0                             
+ fatal error.        is not a legal data symbol.
+  233-       13.2 12.1 0   14.3 12.1 0   15.4 12.1 0   16.5 12.1 0                           
+ fatal error.        is not a legal data symbol.
+  234-       17.6 12.1 0   18.7 12.1 0   19.8 12.1 0   20.9 12.1 0                           
+ fatal error.        is not a legal data symbol.
+  235-       c                                                                               
+  236-       c   ---Row 13 ---                                                               
+  237-       c                                                                               
+  238-       0 13.2 0   1.1 13.2 0   2.2 13.2 0   3.3 13.2 0                                 
+ fatal error.        is not a legal data symbol.
+  239-       4.4 13.2 0   5.5 13.2 0   6.6 13.2 0   7.7 13.2 0                               
+ fatal error.        is not a legal data symbol.
+  240-       8.8 13.2 0   9.9 13.2 0   11.0 13.2 0   12.1 13.2 0                             
+ fatal error.        is not a legal data symbol.
+  241-       13.2 13.2 0   14.3 13.2 0   15.4 13.2 0   16.5 13.2 0                           
+ fatal error.        is not a legal data symbol.
+  242-       17.6 13.2 0   18.7 13.2 0   19.8 13.2 0   20.9 13.2 0                           
+ fatal error.        is not a legal data symbol.
+  243-       c                                                                               
+  244-       c   ---Row 14 ---                                                               
+  245-       c                                                                               
+  246-       0 14.3 0   1.1 14.3 0   2.2 14.3 0   3.3 14.3 0                                 
+ fatal error.        is not a legal data symbol.
+  247-       4.4 14.3 0   5.5 14.3 0   6.6 14.3 0   7.7 14.3 0                               
+ fatal error.        is not a legal data symbol.
+  248-       8.8 14.3 0   9.9 14.3 0   11.0 14.3 0   12.1 14.3 0                             
+ fatal error.        is not a legal data symbol.
+  249-       13.2 14.3 0   14.3 14.3 0   15.4 14.3 0   16.5 14.3 0                           
+ fatal error.        is not a legal data symbol.
+  250-       17.6 14.3 0   18.7 14.3 0   19.8 14.3 0   20.9 14.3 0                           
+ fatal error.        is not a legal data symbol.
+  251-       c                                                                               
+  252-       c   ---Row 15 ---                                                               
+  253-       c                                                                               
+  254-       0 15.4 0   1.1 15.4 0   2.2 15.4 0   3.3 15.4 0                                 
+ fatal error.        is not a legal data symbol.
+  255-       4.4 15.4 0   5.5 15.4 0   6.6 15.4 0   7.7 15.4 0                               
+ fatal error.        is not a legal data symbol.
+  256-       8.8 15.4 0   9.9 15.4 0   11.0 15.4 0   12.1 15.4 0                             
+ fatal error.        is not a legal data symbol.
+  257-       13.2 15.4 0   14.3 15.4 0   15.4 15.4 0   16.5 15.4 0                           
+ fatal error.        is not a legal data symbol.
+  258-       c      ---                                                                      
+  259-       c                                                                               
+  260-       c      ---                                                                      
+  261-       c      end source                                                               
+  262-       c      ---                                                                      
+  263-       c                                                                               
+  264-       c      dose                                                                     
+  265-       c      ---                                                                      
+  266-       c                                                                               
+  267-       c      ---                                                                      
+  268-       c      end tally                                                                
+  269-       c      ---                                                                      
+  270-       c                                                                               
+  271-       c      ---                                                                      
+  272-       c      materials                                                                
+  273-       c      ---                                                                      
+  274-       c                                                                               
+  275-       c      ---                                                                      
+  276-       c      Fuel Salt                                                                
+  277-       m1    94239.70c         -0.28                                                   
+  278-             92235.70c        -0.008 92238.70c        -0.265 17000.66c        -0.368   
+  279-             11023.70c        -0.079                                                   
+  280-       c      ---                                                                      
+  281-       c                                                                               
+  282-       c      ---                                                                      
+  283-       c      cladding: Stainless PE16                                                 
+  284-       m2    12000.          -0.0005                                                   
+  285-             28000.           -0.005 25055.70c        -0.002 16032.         -0.00015   
+  286-             13027.           -0.011 05011.           -5e-005                          
+  287-             83209.          -1e-006 27059.70c        -0.02 24052.           -0.175    
+  288-             42096.           -0.028 28059.            -0.45                           
+  289-             82207.        -1.5e-005 40000.          -0.0004 22048.           -0.011   
+  290-             26056.        -0.29688                                                    
+  291-       c      ---                                                                      
+  292-       c                                                                               
+  293-       c      ---                                                                      
+  294-       c      coolant salt                                                             
+  295-       m3    40000 -0.374                                                              
+  296-             17000.66c -0.42                                                           
+  297-             11023.70c -0.023                                                          
+  298-             19039 -0.183                                                              
+  299-       c      ---                                                                      
+  300-       c                                                                               
+  301-       c      ---                                                                      
+  302-       c      end materials                                                            
+  303-       c      ---                                                                      
+  304-       c                                                                               
+  305-       c      ---                                                                      
+  306-       c      output                                                                   
+  307-       c      ---                                                                      
+  308-       c      PRINT  10 30 38 40 50 55 110 118 120 126 128 160 161 162 170 210 220     
+  309-       prdmp  2j 1                                                                     
+  310-       c      ---                                                                      
+  311-       c      end output                                                               
+  312-       c      ---                                                                      
+  313-       c                                                                               
+  314-       c      -----------                                                              
+  315-       c      end data cards                                                           
+  316-       c      -----------                                                              
+  317-       c                                                                               
+  318-       c      ----------- END CARDS -----------                                        
+  319-       c                                                                               
+  320-       c      -----------------------------------------------------------------        
+
+ surface     51   and surface     60   are the same.     60   will be deleted.
+
+ surface     53   and surface     63   are the same.     63   will be deleted.
+   identical surfaces                                                                                   after change  
+
+   master surface     identical surfaces
+
+       51                60                                                                                            
+       53                63                                                                                            
+ 
+ warning.     2 surfaces were deleted for being the same as others.
+ 
+ warning.  surface     51   appears more than once in a chain.
+
+ surface     51   is in cells   104 and   200 in chain
+   104  <  200
+ 
+ warning.  surface     53   appears more than once in a chain.
+
+ surface     53   is in cells   104 and   200 in chain
+   104  <  200
+ 
+ warning.  surface     11   appears more than once in a chain.
+
+ surface     11   is in cells   104 and   200 in chain
+   104  <  200
+ 
+ warning.  surface     12   appears more than once in a chain.
+
+ surface     12   is in cells   104 and   200 in chain
+   104  <  200
+ 
+ warning.  surface     50   appears more than once in a chain.
+
+ surface     50   is in cells   103 and   104 in chain
+   103  <  104  <  200
+ 
+ warning.  surface     52   appears more than once in a chain.
+
+ surface     52   is in cells   103 and   104 in chain
+   103  <  104  <  200
+ 
+ warning.  cross-section file xsdir      does not exist.
+
+
+1LAHET physics options:                                                                                 print table 41
+
+ lca    ielas   ipreq  iexisa  ichoic   jcoul  nexite   npidk   noact    icem    ilaq
+ lca        2       1       1      23       1       1       0       1       0       0
+
+ lcb    flenb(i),i=1,6                                                          ctofe       flim0
+ lcb    3.4900E+03  3.4900E+03  2.4900E+03  2.4900E+03  8.0000E+02  8.0000E+02 -1.0000E+00 -1.0000E+00
+
+ lea     ipht     icc  nobalc  nobale   ifbrk  ilvden   ievap   nofis
+ lea        1       4       1       0       1       0       0       1
+
+ leb    yzere       bzere       yzero       bzero
+ leb    1.5000E+00  8.0000E+00  1.5000E+00  1.0000E+01
+
+ 
+ warning.  cross-section file bertin     does not exist.
+1cell volumes and masses                                                                                print table 50
+
+        cell     atom          gram         input       calculated                            reason volume
+                density       density       volume        volume         mass       pieces    not calculated
+
+     1   100 -3.39000E+00   0.00000E+00   0.00000E+00   2.03575E+02   0.00000E+00      1                      
+     2   102 -8.00000E+00   0.00000E+00   0.00000E+00   4.77522E+01   0.00000E+00      1                      
+     3   103 -2.77000E+00   0.00000E+00   0.00000E+00   0.00000E+00   0.00000E+00      0      asymmetric      
+     4   104  0.00000E+00   0.00000E+00   0.00000E+00   3.23208E+02   0.00000E+00      0                      
+     5   200  0.00000E+00   0.00000E+00   0.00000E+00   1.29283E+05   0.00000E+00      0                      
+     6   300 -7.29500E-01   0.00000E+00   0.00000E+00   7.99987E+09   0.00000E+00      0                      
+     7   999  0.00000E+00   0.00000E+00   0.00000E+00   0.00000E+00   0.00000E+00      0      infinite        
+1surface areas                                                                                          print table 50
+
+         surface    input      calculated    reason area
+                    area          area       not calculated
+
+     1       10  0.00000E+00   9.04779E+02                   
+     2       11  0.00000E+00   4.05805E+02                   
+     3       12  0.00000E+00   4.05805E+02                   
+     4       13  0.00000E+00   1.00531E+03                   
+     5       50  0.00000E+00   0.00000E+00                   
+     6       51  0.00000E+00   6.43200E+03                   
+     7       52  0.00000E+00   0.00000E+00                   
+     8       53  0.00000E+00   6.43200E+03                   
+     9       54  0.00000E+00   0.00000E+00                   
+    10       55  0.00000E+00   0.00000E+00                   
+    12       61  0.00000E+00   6.43200E+03                   
+    13       62  0.00000E+00   6.43200E+03                   
+    15       70  0.00000E+00   4.00000E+06                   
+    16       71  0.00000E+00   4.00000E+06                   
+    17       72  0.00000E+00   4.00000E+06                   
+    18       73  0.00000E+00   4.00000E+06                   
+    19       74  0.00000E+00   4.00000E+06                   
+    20       75  0.00000E+00   4.00000E+06                   
+1cells                                                                                                  print table 60
+
+                      atom        gram                                     neutron     photon       photon wt            
+        cell  mat    density     density     volume       mass     pieces  importance  importance  generation            
+
+     1   100    1 -3.39000E+00 0.00000E+00 2.03575E+02 0.00000E+00      1  1.0000E+00  1.0000E+00  -1.000E+00            
+     2   102    2 -8.00000E+00 0.00000E+00 4.77522E+01 0.00000E+00      1  1.0000E+00  1.0000E+00  -1.000E+00            
+     3   103    3 -2.77000E+00 0.00000E+00 0.00000E+00 0.00000E+00      0  1.0000E+00  1.0000E+00  -1.000E+00            
+     4   104    0  0.00000E+00 0.00000E+00 3.23208E+02 0.00000E+00      0  1.0000E+00  1.0000E+00  -1.000E+00            
+     5   200    0  0.00000E+00 0.00000E+00 1.29283E+05 0.00000E+00      0  1.0000E+00  1.0000E+00  -1.000E+00            
+     6   300    3 -7.29500E-01 0.00000E+00 7.99987E+09 0.00000E+00      0  1.0000E+00  1.0000E+00  -1.000E+00            
+     7   999    0  0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00      0  0.0000E+00  0.0000E+00  -1.000E+00            
+
+ total                                     8.00000E+09 0.00000E+00
+1surfaces                                                                                               print table 70
+
+         surface     trans  type   surface coefficients
+
+     1     10                cz    4.5000000E-01
+     2     11                pz   -1.6000000E+02
+     3     12                pz    1.6000000E+02
+     4     13                cz    5.0000000E-01
+     5     50                px    5.0250000E-01
+     6     51                px   -5.0250000E-01
+     7     52                py    5.0250000E-01
+     8     53                py   -5.0250000E-01
+     9     54                pz    1.6050250E+02
+    10     55                pz   -1.6050250E+02
+    12     61                px    1.9597500E+01
+    13     62                py    1.9597500E+01
+    15     70                px   -1.0000000E+03
+    16     71                px    1.0000000E+03
+    17     72                py   -1.0000000E+03
+    18     73                py    1.0000000E+03
+    19     74                pz   -1.0000000E+03
+    20     75                pz    1.0000000E+03
+1  identical surfaces                                                                                   print table 70
+
+   master surface     identical surfaces
+
+       51                60                                                                                            
+       53                63                                                                                            
+
+
+   surface coefficients for identical surfaces not used.
+
+         surface     trans  type   surface coefficients
+
+    11     60                px   -5.0250000E-01
+    14     63                py   -5.0250000E-01
+
+
+ random number control    0.632863700000000E+07
+1  cell temperatures in mev for the free-gas thermal neutron treatment.                                 print table 72
+
+   all non-zero importance cells with materials have a temperature for thermal neutrons of 2.5300E-08 mev.
+iwins(37,38) b         0         0
+mxa         7
+
+        10 warning messages so far.
+
+        74 fatal errors so far.

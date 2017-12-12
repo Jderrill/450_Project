@@ -1,0 +1,175 @@
+SSR Fuel Tube
+c      -----------------------------------------------------------------        
+c      James Richards                                                 
+c      -----------------------------------------------------------------        
+c      12.11.2017                                                          
+c      -----------------------------------------------------------------        
+c                                                                               
+c      ------------------------- MODEL NOTES ---------------------------        
+c                                                                               
+c      -----------                                                     
+c                                                                               
+c      -----------                                                              
+c                                                                               
+c      -----------                                                              
+c      assumptions                                                              
+c      -----------                                                              
+c                                                                               
+c      (1) fuel is U235,U238,O                                                  
+c                                                                               
+c      -----------                                                              
+c                                                                               
+c      -----------                                                              
+c      data                                                                     
+c      -----------                                                              
+c
+c      -----------                                                              
+c                                                                               
+c      ----------------------- END MODEL NOTES -------------------------        
+c                                                                               
+c      -----------------------------------------------------------------        
+c                                                                               
+c      ------------------------- START CARDS ---------------------------        
+c                                                                               
+c      -----------                                                              
+c      cell cards                                                               
+c      -----------                                                              
+c                                                                               
+c      ---                                                                      
+c      unit cell                                                                
+c      ---                                                                      
+  100     1  -3.39 -10 11 -12 imp:n,p=1 $fuel salt
+c      ---                                                                      
+  102     2  -8.00 (10 :-11 :12 )11 -12 -13 imp:n,p=1 $clad
+c      ---                                                                      
+  103     3 -2.77 (-11 :12 :13 )-50 51 -52 53 -54 55 imp:n,p=1 $coolant salt
+c      ---                                                                      
+c      end unit cell                                                            
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+  999     0         50 :-51 :52 :-53 :54 :-55 imp:n,p=0 $void
+c      ---                                                                      
+c                                                                               
+c      -----------                                                              
+c      end cell cards                                                           
+c      -----------                                                              
+
+c      -----------                                                              
+c      surface cards                                                            
+c      -----------                                                              
+c                                                                               
+c      ---                                                                      
+c      unit cell geometry                                                       
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      fuel                                                                     
+   10        cz 0.45  $fuel radius
+   11        pz -160  $fuel bottom
+   12        pz 160  $fuel top
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      cladding                                                                 
+   13        cz 0.5  $cladding radius
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      moderator                                                                
+c      ---                                                                      
+   50        px 0.5025  $right edge of cell
+   51        px -0.5025  $left edge of cell
+   52        py 0.5025  $front edge of cell
+   53        py -0.5025  $back edge of cell
+   54        pz 160.5025  $top cap of cell
+   55        pz -160.5025  $bottom cap of cell
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      end unit cell geometry                                                   
+c      ---                                                                      
+c                                                                               
+c      -----------                                                              
+c      end surface cards                                                        
+c      -----------                                                              
+
+c      -----------                                                              
+c      data cards                                                               
+c      -----------                                                              
+c                                                                               
+c      ---                                                                      
+c      physics                                                                  
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      MODE is for neutrons,photons                                             
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+mode  n p
+kcode 1000 1.000000 10 100
+ksrc  0.000000 0.000000 0.000000
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      end source                                                               
+c      ---                                                                      
+c                                                                               
+c      dose                                                                     
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      end tally                                                                
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      materials                                                                
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      Fuel Salt                                                                
+m1    94239.70c         -0.28 
+      92235.70c        -0.008 92238.70c        -0.265 17000.66c        -0.368 
+      11023.70c        -0.079 
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      cladding: Stainless PE16                                                    
+m2    12000.          -0.0005 
+      28000.           -0.005 25055.70c        -0.002 16032.         -0.00015 
+      13027.           -0.011 05011.           -5e-005 
+      83209.          -1e-006 27059.70c        -0.02 24052.           -0.175 
+      42096.           -0.028 28059.            -0.45 
+      82207.        -1.5e-005 40000.          -0.0004 22048.           -0.011 
+      26056.        -0.29688 
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      coolant salt                                                   
+m3    40000 -0.374
+      17000.66c -0.42
+      11023.70c -0.023
+      19039 -0.183                                                         
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      end materials                                                            
+c      ---                                                                      
+c                                                                               
+c      ---                                                                      
+c      output                                                                   
+c      ---                                                                      
+c      PRINT  10 30 38 40 50 55 110 118 120 126 128 160 161 162 170 210 220     
+prdmp  2j 1                                                                     
+c      ---                                                                      
+c      end output                                                               
+c      ---                                                                      
+c                                                                               
+c      -----------                                                              
+c      end data cards                                                           
+c      -----------                                                              
+c                                                                               
+c      ----------- END CARDS -----------                                        
+c                                                                               
+c      -----------------------------------------------------------------        

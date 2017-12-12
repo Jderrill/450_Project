@@ -1,0 +1,196 @@
+ mcnpx    ver=27e   ld=Thu Mar 03 08:00:00 MST 2011   12/11/17 16:52:09
+
+ *************************************************************
+ *                                                           *
+ *                   MCNPX                                   *
+ *                                                           *
+ * Copyright 2007. Los Alamos National Security, LLC.        *
+ * All rights reserved.                                      *
+ *                                                           *
+ * This material was produced under U.S. Government contract *
+ * DE-AC52-06NA25396 for Los Alamos National Laboratory,     *
+ * which is operated by Los Alamos National Security, LLC    *
+ * for the U.S. Department of Energy. The Government is      *
+ * granted for itself and others acting on its behalf a      *
+ * paid-up, nonexclusive, irrevocable worldwide license in   *
+ * this material to reproduce, prepare derivative works, and *
+ * works, and perform publicly and display publicly.         *
+ * Beginning five (5) years after June 1, 2006, subject to   *
+ * additional five-year worldwide renewals, the Government   *
+ * is granted for itself and others acting on its behalf     *
+ * a paid-up, nonexclusive, irrevocable worldwide license    *
+ * in this material to reproduce, prepare derivative works,  *
+ * distribute copies to the public, perform publicly and     *
+ * display publicly, and to permit others to do so.          *
+ *                                                           *
+ * NEITHER THE UNITED STATES NOR THE UNITED STATES           *
+ * DEPARTMENT OF ENERGY, NOR LOS ALAMOS NATIONAL SECURITY,   *
+ * LLC, NOR ANY OF THEIR EMPLOYEES, MAKES ANY WARRANTY,      *
+ * EXPRESS OR IMPLIED, OR ASSUMES ANY LEGAL LIABILITY OR     *
+ * RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR         *
+ * USEFULNESS OF ANY INFORMATION, APPARATUS, PRODUCT, OR     *
+ * PROCESS DISCLOSED, OR REPRESENTS THAT ITS USE WOULD NOT   *
+ * INFRINGE PRIVATELY OWNED RIGHTS.                          *
+ *                                                           *
+ *************************************************************
+ mode  n p                                                            
+ warning.  photonuclear physics may be needed (phys:p).
+ 0 0 0   1.1 0 0   2.2 0 0   3.3 0 0                                  
+ fatal error.        is not a legal data symbol.
+ 4.4 0 0   5.5 0 0   6.6 0 0   7.7 0 0                                
+ fatal error.        is not a legal data symbol.
+ 8.8 0 0   9.9 0 0   11.0 0 0   12.1 0 0                              
+ fatal error.        is not a legal data symbol.
+ 13.2 0 0   14.3 0 0   15.4 0 0   16.5 0 0                            
+ fatal error.        is not a legal data symbol.
+ 17.6 0 0   18.7 0 0   19.8 0 0   20.9 0 0                            
+ fatal error.        is not a legal data symbol.
+ 0 1.1 0   1.1 1.1 0   2.2 1.1 0   3.3 1.1 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 1.1 0   5.5 1.1 0   6.6 1.1 0   7.7 1.1 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 1.1 0   9.9 1.1 0   11.0 1.1 0   12.1 1.1 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 1.1 0   14.3 1.1 0   15.4 1.1 0   16.5 1.1 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 1.1 0   18.7 1.1 0   19.8 1.1 0   20.9 1.1 0                    
+ fatal error.        is not a legal data symbol.
+ 0 2.2 0   1.1 2.2 0   2.2 2.2 0   3.3 2.2 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 2.2 0   5.5 2.2 0   6.6 2.2 0   7.7 2.2 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 2.2 0   9.9 2.2 0   11.0 2.2 0   12.1 2.2 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 2.2 0   14.3 2.2 0   15.4 2.2 0   16.5 2.2 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 2.2 0   18.7 2.2 0   19.8 2.2 0   20.9 2.2 0                    
+ fatal error.        is not a legal data symbol.
+ 0 3.3 0   1.1 3.3 0   2.2 3.3 0   3.3 3.3 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 3.3 0   5.5 3.3 0   6.6 3.3 0   7.7 3.3 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 3.3 0   9.9 3.3 0   11.0 3.3 0   12.1 3.3 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 3.3 0   14.3 3.3 0   15.4 3.3 0   16.5 3.3 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 3.3 0   18.7 3.3 0   19.8 3.3 0   20.9 3.3 0                    
+ fatal error.        is not a legal data symbol.
+ 0 4.4 0   1.1 4.4 0   2.2 4.4 0   3.3 4.4 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 4.4 0   5.5 4.4 0   6.6 4.4 0   7.7 4.4 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 4.4 0   9.9 4.4 0   11.0 4.4 0   12.1 4.4 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 4.4 0   14.3 4.4 0   15.4 4.4 0   16.5 4.4 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 4.4 0   18.7 4.4 0   19.8 4.4 0   20.9 4.4 0                    
+ fatal error.        is not a legal data symbol.
+ 0 5.5 0   1.1 5.5 0   2.2 5.5 0   3.3 5.5 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 5.5 0   5.5 5.5 0   6.6 5.5 0   7.7 5.5 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 5.5 0   9.9 5.5 0   11.0 5.5 0   12.1 5.5 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 5.5 0   14.3 5.5 0   15.4 5.5 0   16.5 5.5 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 5.5 0   18.7 5.5 0   19.8 5.5 0   20.9 5.5 0                    
+ fatal error.        is not a legal data symbol.
+ 0 6.6 0   1.1 6.6 0   2.2 6.6 0   3.3 6.6 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 6.6 0   5.5 6.6 0   6.6 6.6 0   7.7 6.6 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 6.6 0   9.9 6.6 0   11.0 6.6 0   12.1 6.6 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 6.6 0   14.3 6.6 0   15.4 6.6 0   16.5 6.6 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 6.6 0   18.7 6.6 0   19.8 6.6 0   20.9 6.6 0                    
+ fatal error.        is not a legal data symbol.
+ 0 7.7 0   1.1 7.7 0   2.2 7.7 0   3.3 7.7 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 7.7 0   5.5 7.7 0   6.6 7.7 0   7.7 7.7 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 7.7 0   9.9 7.7 0   11.0 7.7 0   12.1 7.7 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 7.7 0   14.3 7.7 0   15.4 7.7 0   16.5 7.7 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 7.7 0   18.7 7.7 0   19.8 7.7 0   20.9 7.7 0                    
+ fatal error.        is not a legal data symbol.
+ 0 8.8 0   1.1 8.8 0   2.2 8.8 0   3.3 8.8 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 8.8 0   5.5 8.8 0   6.6 8.8 0   7.7 8.8 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 8.8 0   9.9 8.8 0   11.0 8.8 0   12.1 8.8 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 8.8 0   14.3 8.8 0   15.4 8.8 0   16.5 8.8 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 8.8 0   18.7 8.8 0   19.8 8.8 0   20.9 8.8 0                    
+ fatal error.        is not a legal data symbol.
+ 0 9.9 0   1.1 9.9 0   2.2 9.9 0   3.3 9.9 0                          
+ fatal error.        is not a legal data symbol.
+ 4.4 9.9 0   5.5 9.9 0   6.6 9.9 0   7.7 9.9 0                        
+ fatal error.        is not a legal data symbol.
+ 8.8 9.9 0   9.9 9.9 0   11.0 9.9 0   12.1 9.9 0                      
+ fatal error.        is not a legal data symbol.
+ 13.2 9.9 0   14.3 9.9 0   15.4 9.9 0   16.5 9.9 0                    
+ fatal error.        is not a legal data symbol.
+ 17.6 9.9 0   18.7 9.9 0   19.8 9.9 0   20.9 9.9 0                    
+ fatal error.        is not a legal data symbol.
+ 0 11.0 0   1.1 11.0 0   2.2 11.0 0   3.3 11.0 0                      
+ fatal error.        is not a legal data symbol.
+ 4.4 11.0 0   5.5 11.0 0   6.6 11.0 0   7.7 11.0 0                    
+ fatal error.        is not a legal data symbol.
+ 8.8 11.0 0   9.9 11.0 0   11.0 11.0 0   12.1 11.0 0                  
+ fatal error.        is not a legal data symbol.
+ 13.2 11.0 0   14.3 11.0 0   15.4 11.0 0   16.5 11.0 0                
+ fatal error.        is not a legal data symbol.
+ 17.6 11.0 0   18.7 11.0 0   19.8 11.0 0   20.9 11.0 0                
+ fatal error.        is not a legal data symbol.
+ 0 12.1 0   1.1 12.1 0   2.2 12.1 0   3.3 12.1 0                      
+ fatal error.        is not a legal data symbol.
+ 4.4 12.1 0   5.5 12.1 0   6.6 12.1 0   7.7 12.1 0                    
+ fatal error.        is not a legal data symbol.
+ 8.8 12.1 0   9.9 12.1 0   11.0 12.1 0   12.1 12.1 0                  
+ fatal error.        is not a legal data symbol.
+ 13.2 12.1 0   14.3 12.1 0   15.4 12.1 0   16.5 12.1 0                
+ fatal error.        is not a legal data symbol.
+ 17.6 12.1 0   18.7 12.1 0   19.8 12.1 0   20.9 12.1 0                
+ fatal error.        is not a legal data symbol.
+ 0 13.2 0   1.1 13.2 0   2.2 13.2 0   3.3 13.2 0                      
+ fatal error.        is not a legal data symbol.
+ 4.4 13.2 0   5.5 13.2 0   6.6 13.2 0   7.7 13.2 0                    
+ fatal error.        is not a legal data symbol.
+ 8.8 13.2 0   9.9 13.2 0   11.0 13.2 0   12.1 13.2 0                  
+ fatal error.        is not a legal data symbol.
+ 13.2 13.2 0   14.3 13.2 0   15.4 13.2 0   16.5 13.2 0                
+ fatal error.        is not a legal data symbol.
+ 17.6 13.2 0   18.7 13.2 0   19.8 13.2 0   20.9 13.2 0                
+ fatal error.        is not a legal data symbol.
+ 0 14.3 0   1.1 14.3 0   2.2 14.3 0   3.3 14.3 0                      
+ fatal error.        is not a legal data symbol.
+ 4.4 14.3 0   5.5 14.3 0   6.6 14.3 0   7.7 14.3 0                    
+ fatal error.        is not a legal data symbol.
+ 8.8 14.3 0   9.9 14.3 0   11.0 14.3 0   12.1 14.3 0                  
+ fatal error.        is not a legal data symbol.
+ 13.2 14.3 0   14.3 14.3 0   15.4 14.3 0   16.5 14.3 0                
+ fatal error.        is not a legal data symbol.
+ 17.6 14.3 0   18.7 14.3 0   19.8 14.3 0   20.9 14.3 0                
+ fatal error.        is not a legal data symbol.
+ 0 15.4 0   1.1 15.4 0   2.2 15.4 0   3.3 15.4 0                      
+ fatal error.        is not a legal data symbol.
+ 4.4 15.4 0   5.5 15.4 0   6.6 15.4 0   7.7 15.4 0                    
+ fatal error.        is not a legal data symbol.
+ 8.8 15.4 0   9.9 15.4 0   11.0 15.4 0   12.1 15.4 0                  
+ fatal error.        is not a legal data symbol.
+ 13.2 15.4 0   14.3 15.4 0   15.4 15.4 0   16.5 15.4 0                
+ fatal error.        is not a legal data symbol.
+ 
+ warning.     2 surfaces were deleted for being the same as others.
+ warning.  surface     51   appears more than once in a chain.
+ warning.  surface     53   appears more than once in a chain.
+ warning.  surface     11   appears more than once in a chain.
+ warning.  surface     12   appears more than once in a chain.
+ warning.  surface     50   appears more than once in a chain.
+ warning.  surface     52   appears more than once in a chain.
+ warning.  cross-section file xsdir      does not exist.
+ warning.  cross-section file bertin     does not exist.
+ imcn   is done

@@ -1,0 +1,449 @@
+1mcnpx    version 2.7.0 ld=Mon Apr 18 08:00:00 MST 2011                12/11/17 14:34:44
+ ***************************************************************************************   probid =   12/11/17 14:34:44
+ n=SSR_mod.inp o=SSR_mod_output_m.txt                                                                                    
+
+ *************************************************************
+ *                                                           *
+ *                   MCNPX                                   *
+ *                                                           *
+ * Copyright 2007. Los Alamos National Security, LLC.        *
+ * All rights reserved.                                      *
+ *                                                           *
+ * This material was produced under U.S. Government contract *
+ * DE-AC52-06NA25396 for Los Alamos National Laboratory,     *
+ * which is operated by Los Alamos National Security, LLC    *
+ * for the U.S. Department of Energy. The Government is      *
+ * granted for itself and others acting on its behalf a      *
+ * paid-up, nonexclusive, irrevocable worldwide license in   *
+ * this material to reproduce, prepare derivative works, and *
+ * works, and perform publicly and display publicly.         *
+ * Beginning five (5) years after June 1, 2006, subject to   *
+ * additional five-year worldwide renewals, the Government   *
+ * is granted for itself and others acting on its behalf     *
+ * a paid-up, nonexclusive, irrevocable worldwide license    *
+ * in this material to reproduce, prepare derivative works,  *
+ * distribute copies to the public, perform publicly and     *
+ * display publicly, and to permit others to do so.          *
+ *                                                           *
+ * NEITHER THE UNITED STATES NOR THE UNITED STATES           *
+ * DEPARTMENT OF ENERGY, NOR LOS ALAMOS NATIONAL SECURITY,   *
+ * LLC, NOR ANY OF THEIR EMPLOYEES, MAKES ANY WARRANTY,      *
+ * EXPRESS OR IMPLIED, OR ASSUMES ANY LEGAL LIABILITY OR     *
+ * RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR         *
+ * USEFULNESS OF ANY INFORMATION, APPARATUS, PRODUCT, OR     *
+ * PROCESS DISCLOSED, OR REPRESENTS THAT ITS USE WOULD NOT   *
+ * INFRINGE PRIVATELY OWNED RIGHTS.                          *
+ *                                                           *
+ *************************************************************
+    1-       SSR Fuel Tube                                                                   
+    2-       c      -----------------------------------------------------------------        
+    3-       c      James Richards                                                           
+    4-       c      -----------------------------------------------------------------        
+    5-       c      12.11.2017                                                               
+    6-       c      -----------------------------------------------------------------        
+    7-       c                                                                               
+    8-       c      ------------------------- MODEL NOTES ---------------------------        
+    9-       c                                                                               
+   10-       c      -----------                                                              
+   11-       c                                                                               
+   12-       c      -----------                                                              
+   13-       c                                                                               
+   14-       c      -----------                                                              
+   15-       c      assumptions                                                              
+   16-       c      -----------                                                              
+   17-       c                                                                               
+   18-       c      (1) fuel is U235,U238,O                                                  
+   19-       c                                                                               
+   20-       c      -----------                                                              
+   21-       c                                                                               
+   22-       c      -----------                                                              
+   23-       c      data                                                                     
+   24-       c      -----------                                                              
+   25-       c                                                                               
+   26-       c      -----------                                                              
+   27-       c                                                                               
+   28-       c      ----------------------- END MODEL NOTES -------------------------        
+   29-       c                                                                               
+   30-       c      -----------------------------------------------------------------        
+   31-       c                                                                               
+   32-       c      ------------------------- START CARDS ---------------------------        
+   33-       c                                                                               
+   34-       c      -----------                                                              
+   35-       c      cell cards                                                               
+   36-       c      -----------                                                              
+   37-       c                                                                               
+   38-       c      ---                                                                      
+   39-       c      unit cell                                                                
+   40-       c      ---                                                                      
+   41-         100     1  -3.39 -10 11 -12 imp:n,p=1 $fuel salt                              
+   42-       c      ---                                                                      
+   43-         102     2  -8.00 (10 :-11 :12 )11 -12 -13 imp:n,p=1 $clad                     
+   44-       c      ---                                                                      
+   45-         103     3 -2.77 (-11 :12 :13 )-50 51 -52 53 -54 55 imp:n,p=1 $coolant salt    
+   46-       c      ---                                                                      
+   47-       c      end unit cell                                                            
+   48-       c      ---                                                                      
+   49-       c                                                                               
+   50-       c      ---                                                                      
+   51-         999     0         50 :-51 :52 :-53 :54 :-55 imp:n,p=0 $void                   
+   52-       c      ---                                                                      
+   53-       c                                                                               
+   54-       c      -----------                                                              
+   55-       c      end cell cards                                                           
+   56-       c      -----------                                                              
+   57-                                                                                       
+   58-       c      -----------                                                              
+   59-       c      surface cards                                                            
+   60-       c      -----------                                                              
+   61-       c                                                                               
+   62-       c      ---                                                                      
+   63-       c      unit cell geometry                                                       
+   64-       c      ---                                                                      
+   65-       c                                                                               
+   66-       c      ---                                                                      
+   67-       c      fuel                                                                     
+   68-          10        cz 0.25  $fuel radius                                              
+   69-          11        pz -200  $fuel bottom                                              
+   70-          12        pz 200  $fuel top                                                  
+   71-       c      ---                                                                      
+   72-       c                                                                               
+   73-       c      ---                                                                      
+   74-       c      cladding                                                                 
+   75-          13        cz 0.26  $cladding radius                                          
+   76-       c      ---                                                                      
+   77-       c                                                                               
+   78-       c      ---                                                                      
+   79-       c      moderator                                                                
+   80-       c      ---                                                                      
+   81-          50        px 0.627  $right edge of cell                                      
+   82-          51        px -0.627  $left edge of cell                                      
+   83-          52        py 0.627  $front edge of cell                                      
+   84-          53        py -0.627  $back edge of cell                                      
+   85-          54        pz 200.627  $top cap of cell                                       
+   86-          55        pz -200.627  $bottom cap of cell                                   
+   87-       c      ---                                                                      
+   88-       c                                                                               
+   89-       c      ---                                                                      
+   90-       c      end unit cell geometry                                                   
+   91-       c      ---                                                                      
+   92-       c                                                                               
+   93-       c      -----------                                                              
+   94-       c      end surface cards                                                        
+   95-       c      -----------                                                              
+   96-                                                                                       
+   97-       c      -----------                                                              
+   98-       c      data cards                                                               
+   99-       c      -----------                                                              
+  100-       c                                                                               
+  101-       c      ---                                                                      
+  102-       c      physics                                                                  
+  103-       c      ---                                                                      
+  104-       c                                                                               
+  105-       c      ---                                                                      
+  106-       c      MODE is for neutrons,photons                                             
+  107-       c      ---                                                                      
+  108-       c                                                                               
+  109-       c      ---                                                                      
+  110-       mode  n p                                                                       
+ warning.  photonuclear physics may be needed (phys:p).
+  111-       kcode 1000 1.000000 10 100                                                      
+  112-       ksrc  0.000000 0.000000 0.000000                                                
+  113-       c      ---                                                                      
+  114-       c                                                                               
+  115-       c      ---                                                                      
+  116-       c      end source                                                               
+  117-       c      ---                                                                      
+  118-       c                                                                               
+  119-       c      dose                                                                     
+  120-       c      ---                                                                      
+  121-       c                                                                               
+  122-       c      ---                                                                      
+  123-       c      end tally                                                                
+  124-       c      ---                                                                      
+  125-       c                                                                               
+  126-       c      ---                                                                      
+  127-       c      materials                                                                
+  128-       c      ---                                                                      
+  129-       c                                                                               
+  130-       c      ---                                                                      
+  131-       c      Fuel Salt                                                                
+  132-       m1    94239.70c         -0.28                                                   
+  133-             92235.70c        -0.008 92238.70c        -0.265 17000.66c        -0.368   
+  134-             11023.70c        -0.079                                                   
+  135-       c      ---                                                                      
+  136-       c                                                                               
+  137-       c      ---                                                                      
+  138-       c      cladding: Stainless PE16                                                 
+  139-       m2    12000.          -0.0005                                                   
+  140-             28000.           -0.005 25055.70c        -0.002 16032.         -0.00015   
+  141-             13027.           -0.011 05011.           -5e-005                          
+  142-             83209.          -1e-006 27059.70c        -0.02 24052.           -0.175    
+  143-             42096.           -0.028 28059.            -0.45                           
+  144-             82207.        -1.5e-005 40000.          -0.0004 22048.           -0.011   
+  145-             26056.        -0.29688                                                    
+  146-       c      ---                                                                      
+  147-       c                                                                               
+  148-       c      ---                                                                      
+  149-       c      coolant salt                                                             
+  150-       m3    40000 -0.374                                                              
+  151-             17000.66c -0.42                                                           
+  152-             11023.70c -0.023                                                          
+  153-             19039 -0.183                                                              
+  154-       c      ---                                                                      
+  155-       c                                                                               
+  156-       c      ---                                                                      
+  157-       c      end materials                                                            
+  158-       c      ---                                                                      
+  159-       c                                                                               
+  160-       c      ---                                                                      
+  161-       c      output                                                                   
+  162-       c      ---                                                                      
+  163-       c      PRINT  10 30 38 40 50 55 110 118 120 126 128 160 161 162 170 210 220     
+  164-       prdmp  2j 1                                                                     
+  165-       c      ---                                                                      
+  166-       c      end output                                                               
+  167-       c      ---                                                                      
+  168-       c                                                                               
+  169-       c      -----------                                                              
+  170-       c      end data cards                                                           
+  171-       c      -----------                                                              
+  172-       c                                                                               
+  173-       c      ----------- END CARDS -----------                                        
+  174-       c                                                                               
+  175-       c      -----------------------------------------------------------------        
+  total fission nubar data are being used.
+ 
+ warning.  kcode usually needs s(a,b) physics (mt card)
+
+
+1LAHET physics options:                                                                                 print table 41
+
+ lca    ielas   ipreq  iexisa  ichoic   jcoul  nexite   npidk   noact    icem    ilaq
+ lca        2       1       1      23       1       1       0       1       0       0
+
+ lcb    flenb(i),i=1,6                                                          ctofe       flim0
+ lcb    3.4900E+03  3.4900E+03  2.4900E+03  2.4900E+03  8.0000E+02  8.0000E+02 -1.0000E+00 -1.0000E+00
+
+ lea     ipht     icc  nobalc  nobale   ifbrk  ilvden   ievap   nofis
+ lea        1       4       1       0       1       0       0       1
+
+ leb    yzere       bzere       yzero       bzero
+ leb    1.5000E+00  8.0000E+00  1.5000E+00  1.0000E+01
+
+1cells                                                                                                  print table 60
+
+                      atom        gram                                     neutron     photon       photon wt            
+        cell  mat    density     density     volume       mass     pieces  importance  importance  generation            
+
+     1   100    1  3.29389E-02 3.39000E+00 7.85398E+01 2.66250E+02      1  1.0000E+00  1.0000E+00  -1.000E+00            
+     2   102    2  8.54495E-02 8.00000E+00 6.40885E+00 5.12708E+01      1  1.0000E+00  1.0000E+00  -1.000E+00            
+     3   103    3  3.61040E-02 2.77000E+00 0.00000E+00 0.00000E+00      0  1.0000E+00  1.0000E+00  -1.000E+00            
+     4   999    0  0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00      0  0.0000E+00  0.0000E+00  -1.000E+00            
+
+ total                                     8.49487E+01 3.17521E+02
+
+
+ random number control    0.830206021468160E+14
+ 
+ warning.  Resetting bank size from   2048 to    128 particles
+
+         3 warning messages so far.
+1cross-section tables                                                                                   print table 100
+
+     table    length
+
+                        tables from file xdata/endf71x/B/5011.710nc                                      
+
+ particle-production data for ipt=  9 being expunged from   5011.80c
+ particle-production data for ipt= 34 being expunged from   5011.80c
+   5011.80c  122435  B11 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)         mat 528      12/14/12
+
+                        tables from file xdata/endf70a                                                   
+
+  11023.70c   62862  11-Na- 23 at 293.6K from endf/b-vii.0 njoy99.248                             mat1125      08/25/07
+
+                        tables from file xdata/actia                                                     
+
+  12000.62c   59215  12-mg-0 at 293.6K from endf/b-vi.8 njoy99.50                                 mat1200      12/06/01
+
+                        tables from file xdata/endf71x/Al/13027.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  13027.80c
+ particle-production data for ipt= 31 being expunged from  13027.80c
+ particle-production data for ipt= 32 being expunged from  13027.80c
+ particle-production data for ipt= 34 being expunged from  13027.80c
+  13027.80c  158468  Al27 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)        mat1325      12/22/12
+
+                        tables from file xdata/endf71x/S/16032.710nc                                     
+
+  16032.80c  104012  S32 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)         mat1625      12/14/12
+
+                        tables from file xdata/endf66a                                                   
+
+  17000.66c   33175  17-cl-0 at 293.6K from endf-vi.0 njoy99.50                                   mat1700      07/25/01
+
+                        tables from file xdata/endf71x/K/19039.710nc                                     
+
+  19039.80c  200743  K39 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)         mat1925      12/13/12
+
+                        tables from file xdata/endf71x/Ti/22048.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  22048.80c
+ particle-production data for ipt= 34 being expunged from  22048.80c
+  22048.80c  213783  Ti48 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)        mat2231      12/13/12
+
+                        tables from file xdata/endf71x/Cr/24052.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  24052.80c
+ particle-production data for ipt= 31 being expunged from  24052.80c
+ particle-production data for ipt= 32 being expunged from  24052.80c
+ particle-production data for ipt= 34 being expunged from  24052.80c
+  24052.80c  323182  Cr52 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)        mat2431      12/13/12
+
+                        tables from file xdata/endf70b                                                   
+
+ particle-production data for ipt=  9 being expunged from  25055.70c
+ particle-production data for ipt= 34 being expunged from  25055.70c
+  25055.70c  250045  25-Mn- 55 at 293.6K from endf/b-vii.0 njoy99.248                             mat2525      08/26/07
+  27059.70c  234653  27-Co- 59 at 293.6K from endf/b-vii.0 njoy99.248                             mat2725      08/26/07
+
+                        tables from file xdata/endf71x/Fe/26056.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  26056.80c
+ particle-production data for ipt= 31 being expunged from  26056.80c
+ particle-production data for ipt= 32 being expunged from  26056.80c
+ particle-production data for ipt= 34 being expunged from  26056.80c
+  26056.80c  373657  Fe56 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)        mat2631      12/22/12
+
+                        tables from file xdata/rmccs                                                     
+
+  28000.50c  105647  njoy                                                                       (  1328)      79/06/21.
+
+                        tables from file xdata/endf71x/Ni/28059.710nc                                    
+
+  28059.80c   50721  Ni59 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)        mat2828      12/15/12
+
+                        tables from file xdata/endf66b                                                   
+
+  40000.66c   98524  40-zr-0 at 293.6K from endf-vi.1 njoy99.50                                   mat4000      07/24/01
+ 
+ warning.   40000.66c lacks gamma-ray production cross sections.
+
+                        tables from file xdata/endf71x/Mo/42096.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  42096.80c
+ particle-production data for ipt= 31 being expunged from  42096.80c
+ particle-production data for ipt= 32 being expunged from  42096.80c
+ particle-production data for ipt= 34 being expunged from  42096.80c
+  42096.80c  218015  Mo96 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)        mat4237      12/16/12
+                     probability tables used from 1.9000E-02 to 1.0000E-01 mev.
+
+                        tables from file xdata/endf71x/Pb/82207.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  82207.80c
+ particle-production data for ipt= 31 being expunged from  82207.80c
+ particle-production data for ipt= 32 being expunged from  82207.80c
+ particle-production data for ipt= 33 being expunged from  82207.80c
+ particle-production data for ipt= 34 being expunged from  82207.80c
+  82207.80c  366695  Pb207 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)       mat8234      12/22/12
+
+                        tables from file xdata/endf71x/Bi/83209.710nc                                    
+
+ particle-production data for ipt=  9 being expunged from  83209.80c
+ particle-production data for ipt= 31 being expunged from  83209.80c
+ particle-production data for ipt= 32 being expunged from  83209.80c
+ particle-production data for ipt= 34 being expunged from  83209.80c
+  83209.80c  138740  Bi209 ENDF71x (jlconlin)  Ref. see jlconlin (ref 09/10/2012  10:00:53)       mat8325      12/18/12
+
+                        tables from file xdata/endf70j                                                   
+
+  92235.70c  755947  92-U -235 at 293.6K from endf/b-vii.0 njoy99.248   total nu                  mat9228      08/25/07
+                     probability tables used from 2.2500E-03 to 2.5000E-02 mev.
+  92238.70c 1479970  92-U -238 at 293.6K from endf/b-vii.0 njoy99.248   total nu                  mat9237      08/25/07
+                     probability tables used from 2.0000E-02 to 1.4903E-01 mev.
+  94239.70c  659076  94-Pu-239 at 293.6K from endf/b-vii.0 njoy99.248   total nu                  mat9437      08/25/07
+                     probability tables used from 2.5000E-03 to 3.0000E-02 mev.
+
+                        tables from file xdata/mcplib84                                                  
+
+   5000.84p    3192  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  11000.84p    4071  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  12000.84p    3857  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  13000.84p    4922  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  16000.84p    4730  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  17000.84p    4814  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  19000.84p    5123  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  22000.84p    5818  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  24000.84p    5758  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  25000.84p    5674  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  26000.84p    5794  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  27000.84p    5512  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  28000.84p    5902  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  40000.84p    7779  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  42000.84p    7668  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  82000.84p   10086  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  83000.84p   10449  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  92000.84p   10884  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+  94000.84p   10527  Update of MCPLIB04 Photon Compton Broadening Data For MCNP5 see LA-UR-    12-00018        01/03/12
+
+  total     6132125
+
+ maximum photon energy set to  100.0 mev (maximum electron energy)
+
+                        tables from file xdata/el03                                                      
+
+   5000.03e    2331                                                                                          6/6/98    
+  11000.03e    2337                                                                                          6/6/98    
+  12000.03e    2337                                                                                          6/6/98    
+  13000.03e    2337                                                                                          6/6/98    
+  16000.03e    2339                                                                                          6/6/98    
+  17000.03e    2339                                                                                          6/6/98    
+  19000.03e    2343                                                                                          6/6/98    
+  22000.03e    2345                                                                                          6/6/98    
+  24000.03e    2345                                                                                          6/6/98    
+  25000.03e    2345                                                                                          6/6/98    
+  26000.03e    2345                                                                                          6/6/98    
+  27000.03e    2345                                                                                          6/6/98    
+  28000.03e    2347                                                                                          6/6/98    
+  40000.03e    2353                                                                                          6/6/98    
+  42000.03e    2353                                                                                          6/6/98    
+  82000.03e    2373                                                                                          6/6/98    
+  83000.03e    2373                                                                                          6/6/98    
+  92000.03e    2379                                                                                          6/6/98    
+  94000.03e    2379                                                                                          6/6/98    
+
+1particles and energy limits                                                                            print table 101
+
+                         particle      maximum       smallest      largest       always        always
+                         cutoff        particle      table         table         use table     use model
+   particle type         energy        energy        maximum       maximum       below         above
+
+    1  n  neutron       0.0000E+00    1.0000E+37    2.0000E+01    2.0000E+02    2.0000E+01    2.0000E+02
+    2  p  photon        1.0000E-03    1.0000E+02    1.0000E+05    1.0000E+05    1.0000E+37    1.0000E+37
+    3  e  electron      1.0000E-03    1.0000E+02    1.0000E+02    1.0000E+02    1.0000E+37    1.0000E+37
+ 
+ 
+ warning.  material    2 has been set to a conductor.
+1decimal words of dynamically allocated storage
+
+     general                  0
+     tallies                  0
+     bank                 23297
+     cross sections     6132126
+
+     total                    0     =           0 bytes
+
+ ***********************************************************************************************************************
+ dump no.    1 on file SSR_mod.inpr     nps =           0   coll =              0     ctm =        0.00     nrn =              0
+
+
+ source distribution written to file SSR_mod.inps        cycle =     0
+
+         5 warning messages so far.
+1estimated keff results by cycle                                                                        print table 175
+
+ cycle     1    k(collision)  0.005744    prompt removal lifetime(abs)  8.3201E-02    source points generated      7
+
+ bad trouble in mcrun    in routine kcalc                             
+ no new source points were generated.                                 
+

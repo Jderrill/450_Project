@@ -37,20 +37,20 @@ for i in range(0,nCol):
     if x != 0:
         output.write("c\n")
         output.write("c   ---Row " + str(i+1) + " ---\n")
-        output.write("c\n")
+        output.write("c\n       ")
         y = y + p
     x = 0
     for j in range(0,nRow):
-        output.write(str(x)+" "+str(y)+" "+str(z)+"   ")
+        output.write(str(x) + " " + str(y) + " "+ str(z) + "   ")
         
         if newLineCounter == nSrc or j == 49:
             #sends MCNP code to the next line
-            output.write("   \n")
+            output.write("   \n       ")
             newLineCounter = 0
         newLineCounter = newLineCounter + 1    
         x = x + p
 
 #write output to file
-fd= open("C:\Users\James\Documents\GitHub\\450_Project\Python Scripts\lattice.txt", "wb")
+fd= open("C:\Users\James\Documents\GitHub\\450_Project\Python Scripts\lattice.txt", "w")
 fd.write(output.getvalue())
 output.close()    

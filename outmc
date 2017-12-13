@@ -1,4 +1,4 @@
- mcnpx    ver=27e   ld=Thu Mar 03 08:00:00 MST 2011   12/12/17 16:30:07
+ mcnpx    ver=27e   ld=Thu Mar 03 08:00:00 MST 2011   12/12/17 16:50:17
 
  *************************************************************
  *                                                           *
@@ -35,8 +35,6 @@
  *************************************************************
  mode  n p                                                            
  warning.  photonuclear physics may be needed (phys:p).
- 1.1 0 0                                                              
- fatal error.        is not a legal data symbol.
  
  warning.     2 surfaces were deleted for being the same as others.
  warning.  surface     51   appears more than once in a chain.
